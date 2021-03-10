@@ -1,5 +1,5 @@
 import React, { ReactChild, ReactChildren } from 'react'
-import { Div } from './styles'
+import { Div, Icon } from './styles'
 
 interface DivProps {
   children: ReactChild | ReactChildren
@@ -8,7 +8,7 @@ interface DivProps {
 function Error({ children } : DivProps): JSX.Element {
   return (
     <Div>
-      <span className="material-icons">&#xe88e;</span>
+      <Icon className="material-icons">&#xe88e;</Icon>
       {children}
     </Div>
   )

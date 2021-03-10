@@ -4,7 +4,7 @@ export const Input = styled.input`
   border: 1px solid #440a67;
   background-color: #f0f5f9;
   color: #1e2022;
-  height: 46px;
+  height: 36px;
   padding: 12px;
   width: 300px;
   border-radius: 8px;
@@ -17,15 +17,14 @@ export const Input = styled.input`
 `
 export const Label = styled.span`
   color: #1e2022;
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;
 `
 
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0;
   width: max-content;
 `
