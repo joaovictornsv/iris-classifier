@@ -1,10 +1,10 @@
-import React from 'react';
-import { FormElement } from './styles';
+import React from 'react'
+import { FormElement } from './styles'
 
-interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {}
+type FormProps = React.FormHTMLAttributes<HTMLFormElement>
 
 const Form: React.FC<FormProps> = (props: FormProps) => {
-  const { children, ...rest } = props;
+  const { children, ...rest } = props
   return (
     <FormElement {...rest}>
       {children}
@@ -12,4 +12,4 @@ const Form: React.FC<FormProps> = (props: FormProps) => {
   )
 }
 
-export default Form;
+export default Form

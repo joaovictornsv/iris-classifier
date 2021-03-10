@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Button } from './styles'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -6,7 +6,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const ButtonSubmit: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { label, ...rest } = props;
+  const { label, ...rest } = props
 
   return (
     <Button {...rest}>
@@ -15,4 +15,4 @@ const ButtonSubmit: React.FC<ButtonProps> = (props: ButtonProps) => {
   )
 }
 
-export default ButtonSubmit;
+export default ButtonSubmit

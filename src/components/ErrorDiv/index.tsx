@@ -1,12 +1,12 @@
-import React, { ReactChild, ReactChildren } from 'react';
+import React, { ReactChild, ReactChildren } from 'react'
 import { Div } from './styles'
 
 interface DivProps {
   children: ReactChild | ReactChildren
 }
 
-function Error ({ children } : DivProps) {
-  return(
+function Error({ children } : DivProps): JSX.Element {
+  return (
     <Div>
       <span className="material-icons">&#xe88e;</span>
       {children}
@@ -14,5 +14,4 @@ function Error ({ children } : DivProps) {
   )
 }
 
-
-export default Error;
+export default Error

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Input as InputElement, Label, InputContainer } from './styles'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -6,7 +6,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
-  const { label, ...rest } = props;
+  const { label, ...rest } = props
 
   return (
     <InputContainer>

@@ -1,10 +1,9 @@
-// eslint-disable-next-line no-use-before-define
-import React, { FormEvent, useState } from 'react';
-import * as yup from 'yup';
-import ButtonSubmit from '../src/components/ButtonSubmit';
-import Form from '../src/components/Form';
-import Input from '../src/components/Input';
-import ErrorDiv from '../src/components/ErrorDiv';
+import React, { FormEvent, useState } from 'react'
+import * as yup from 'yup'
+import ButtonSubmit from '../src/components/ButtonSubmit'
+import Form from '../src/components/Form'
+import Input from '../src/components/Input'
+import ErrorDiv from '../src/components/ErrorDiv'
 import {
   Main,
   FormContainer,
@@ -16,7 +15,7 @@ import {
   Image
 } from '../src/styles/pages'
 
-import api from '../src/services/api';
+import api from '../src/services/api'
 
 interface ImageProps {
   src: string;
@@ -24,18 +23,18 @@ interface ImageProps {
 }
 
 interface ImagesCollection {
-  [index: string]: any | ImageProps;
+  [index: string]: ImageProps;
 }
 
-export default function Home() {
-  const [ screenState, setScreenState ] = useState<string>('You will see the result here')
+export default function Home(): JSX.Element {
+  const [screenState, setScreenState] = useState<string>('You will see the result here')
 
-  const [ sepalLength, setSepalLength ] = useState<string>('');
-  const [ sepalWidth, setSepalWidth ] = useState<string>('');
-  const [ petalLength, setPetalLength ] = useState<string>('');
-  const [ petalWidth, setPetalWidth ] = useState<string>('');
+  const [sepalLength, setSepalLength] = useState<string>('')
+  const [sepalWidth, setSepalWidth] = useState<string>('')
+  const [petalLength, setPetalLength] = useState<string>('')
+  const [petalWidth, setPetalWidth] = useState<string>('')
 
-  const [ result, setResult ] = useState<string>('')
+  const [result, setResult] = useState<string>('')
   const [formDataIsValid, setFormDataIsValid] = useState<boolean>(false)
   const [submited, setSubmited] = useState<boolean>(false)
   const [errors, setErrors] = useState<string>('')
@@ -44,7 +43,7 @@ export default function Home() {
     sepal_length: yup.number().min(0).required().typeError('Sepal length must be a number'),
     sepal_width: yup.number().min(0).required().typeError('Sepal width must be a number'),
     petal_length: yup.number().min(0).required().typeError('Petal length must be a number'),
-    petal_width: yup.number().min(0).required().typeError('Petal width must be a number'),
+    petal_width: yup.number().min(0).required().typeError('Petal width must be a number')
   })
 
   const screenStatesMessages = {
@@ -68,17 +67,16 @@ export default function Home() {
       alt: 'Iris Virginica'
     }
   }
- 
 
   async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setSubmited(true);
+    e.preventDefault()
+    setSubmited(true)
 
     const dataRequest = {
       sepal_length: Number(sepalLength),
       sepal_width: Number(sepalWidth),
       petal_length: Number(petalLength),
-      petal_width: Number(petalWidth),
+      petal_width: Number(petalWidth)
     }
 
     setResult('')
@@ -92,10 +90,10 @@ export default function Home() {
       .catch((err) => {
         setErrors(err.toString())
         setFormDataIsValid(false)
-      });
+      })
 
     if (formDataIsValid) {
-      try{
+      try {
         const response = await (await api.post('/predict', dataRequest)).data.type
 
         if (!response) {
@@ -104,14 +102,10 @@ export default function Home() {
 
         setResult(response)
         setScreenState(screenStatesMessages.ready)
-      }
-      
-
-      catch {
+      } catch {
         setScreenState(screenStatesMessages.error)
       }
     }
-      
   }
 
   return (
@@ -121,7 +115,7 @@ export default function Home() {
           <Form onSubmit={handleSubmit}>
             <Input
               key="input_sepalLength"
-              type="text" 
+              type="text"
               label="Sepal length"
               value={sepalLength}
               onChange={(e) => setSepalLength(e.target.value.replace(',', '.'))}
@@ -139,7 +133,7 @@ export default function Home() {
 
             <Input
               key="input_petalLength"
-              type="text" 
+              type="text"
               label="Petal length"
               value={petalLength}
               onChange={(e) => setPetalLength(e.target.value.replace(',', '.'))}
@@ -148,20 +142,20 @@ export default function Home() {
 
             <Input
               key="input_petalWidth"
-              type="text" 
+              type="text"
               label="Petal width"
               value={petalWidth}
               onChange={(e) => setPetalWidth(e.target.value.replace(',', '.'))}
               required
             />
 
-            {submited && errors && 
+            {submited && errors &&
               <ErrorDiv>
                 {errors.substring(17)}
               </ErrorDiv>}
 
             <ButtonSubmit label="Predict" type="submit"/>
-            
+
           </Form>
         </FormContent>
       </FormContainer>
@@ -181,9 +175,9 @@ export default function Home() {
               </ImageContainer>
             </>
           )}
-          
+
         </ResultContent>
       </ResultContainer>
     </Main>
-  );
+  )
 }
