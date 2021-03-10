@@ -12,6 +12,11 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Iris</title>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+
       </Head>
       <GlobalStyle />
       <Component {...pageProps} />

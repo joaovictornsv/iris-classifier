@@ -5,5 +5,6 @@ export const FormElement = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  width: max-content;
+  width: 100%;
+  max-width: 400px
 `

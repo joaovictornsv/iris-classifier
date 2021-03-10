@@ -42,5 +42,17 @@ export const Title = styled.h1`
   font-family: 'Montserrat', sans-serif;
 `
 
+export const ImageContainer = styled.div`
+  border-radius: 50%;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
 export const Image = styled.img`
+  height: 300px;
+  width: auto;
 `
