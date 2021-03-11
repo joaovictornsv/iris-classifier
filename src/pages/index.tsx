@@ -1,6 +1,5 @@
 import React, { FormEvent, useState } from 'react'
 import * as yup from 'yup'
-import Lottie from 'react-lottie'
 import ButtonSubmit from '../components/ButtonSubmit'
 import Form from '../components/Form'
 import Input from '../components/Input'
@@ -17,7 +16,8 @@ import {
 } from '../styles/pages'
 
 import api from '../services/api'
-import animationData from '../assets/animations/loading.json'
+
+import { useLoading, Bars } from '@agney/react-loading'
 
 interface ImageProps {
   src: string;
@@ -30,9 +30,6 @@ interface ImagesCollection {
 
 export default function Home(): JSX.Element {
   const [screenState, setScreenState] = useState<string>('You will see the result here')
-  const [animationState, setAnimationState] = useState(
-    { isStopped: true, isPaused: false }
-  )
 
   const [sepalLength, setSepalLength] = useState<string>('')
   const [sepalWidth, setSepalWidth] = useState<string>('')
@@ -40,7 +37,6 @@ export default function Home(): JSX.Element {
   const [petalWidth, setPetalWidth] = useState<string>('')
 
   const [result, setResult] = useState<string>('')
-  const [formDataIsValid, setFormDataIsValid] = useState<boolean>(false)
   const [submited, setSubmited] = useState<boolean>(false)
   const [errors, setErrors] = useState<string>('')
 
@@ -73,14 +69,10 @@ export default function Home(): JSX.Element {
     }
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  }
+  const { containerProps, indicatorEl } = useLoading({
+    loading: true,
+    indicator: <Bars width="100" color="white"/>
+  })
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -93,24 +85,21 @@ export default function Home(): JSX.Element {
       petal_width: Number(petalWidth)
     }
 
+    let dataValidated = false
     await validation.validate(dataRequest)
       .then(() => {
-        setFormDataIsValid(true)
+        dataValidated = true
         setErrors('')
       })
       .catch((err) => {
+        dataValidated = false
         setErrors(err.toString())
-        setFormDataIsValid(false)
       })
 
-    if (formDataIsValid) {
+    if (dataValidated) {
       try {
         setResult('')
         setScreenState(screenStatesMessages.loading)
-        setAnimationState({
-          ...animationState,
-          isStopped: !animationState.isStopped
-        })
 
         const response = await (await api.post('/predict', dataRequest)).data.type
 
@@ -180,18 +169,15 @@ export default function Home(): JSX.Element {
 
       <ResultContainer>
         <ResultContent>
+
           <Title>Resultado</Title>
-          <div>
             {screenState}
             {screenState === screenStatesMessages.loading && (
-              <Lottie options={defaultOptions}
-                height={400}
-                width={400}
-                isStopped={animationState.isStopped}
-                isPaused={animationState.isPaused}
-              />
+              <section {...containerProps}>
+                {indicatorEl}
+              </section>
             )}
-          </div>
+
           {result && (
             <>
             <Title>{result.toUpperCase()}</Title>
@@ -199,6 +185,7 @@ export default function Home(): JSX.Element {
                 <Image
                   src={irisImages[result].src}
                   alt={irisImages[result].alt}
+                  draggable={false}
                 />
               </ImageContainer>
             </>
