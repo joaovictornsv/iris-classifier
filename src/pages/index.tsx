@@ -10,6 +10,8 @@ import {
   FormContent,
   ResultContainer,
   ResultContent,
+  ResultBox,
+  ResultTitle,
   Title,
   ImageContainer,
   Image
@@ -29,7 +31,7 @@ interface ImagesCollection {
 }
 
 export default function Home(): JSX.Element {
-  const [screenState, setScreenState] = useState<string>('You will see the result here')
+  const [screenState, setScreenState] = useState<string>('Please fill out the form to predict the class')
 
   const [sepalLength, setSepalLength] = useState<string>('')
   const [sepalWidth, setSepalWidth] = useState<string>('')
@@ -48,7 +50,7 @@ export default function Home(): JSX.Element {
   })
 
   const screenStatesMessages = {
-    empty: 'You will see the result here',
+    empty: 'Please fill out the form to predict the class',
     loading: 'Loading',
     ready: 'The predict is',
     error: 'An error occurred'
@@ -75,6 +77,8 @@ export default function Home(): JSX.Element {
   })
 
   async function handleSubmit(e: FormEvent) {
+    setScreenState(screenStatesMessages.empty)
+
     e.preventDefault()
     setSubmited(true)
 
@@ -98,7 +102,6 @@ export default function Home(): JSX.Element {
 
     if (dataValidated) {
       try {
-        setResult('')
         setScreenState(screenStatesMessages.loading)
 
         const response = await (await api.post('/predict', dataRequest)).data.type
@@ -169,27 +172,49 @@ export default function Home(): JSX.Element {
 
       <ResultContainer>
         <ResultContent>
+          <Title>Result</Title>
+            <ResultBox>
 
-          <Title>Resultado</Title>
-            {screenState}
-            {screenState === screenStatesMessages.loading && (
-              <section {...containerProps}>
-                {indicatorEl}
-              </section>
-            )}
+            {screenState === screenStatesMessages.empty &&
+                (
+                  <ResultTitle>
+                    {screenState}
+                  </ResultTitle>
+                )
+                }
 
-          {result && (
-            <>
-            <Title>{result.toUpperCase()}</Title>
-              <ImageContainer>
-                <Image
-                  src={irisImages[result].src}
-                  alt={irisImages[result].alt}
-                  draggable={false}
-                />
-              </ImageContainer>
-            </>
-          )}
+              {screenState === screenStatesMessages.loading &&
+                (
+                  <>
+                    <ResultTitle>
+                      {screenState}
+                    </ResultTitle>
+                    <ImageContainer>
+                      <section {...containerProps}>
+                        {indicatorEl}
+                      </section>
+                    </ImageContainer>
+                  </>
+                )
+                }
+                {screenState === screenStatesMessages.ready &&
+                (
+                  <>
+                    <ResultTitle>
+                      {result.toUpperCase()}
+                    </ResultTitle>
+                    <ImageContainer>
+
+                      <Image
+                        src={irisImages[result].src}
+                        alt={irisImages[result].alt}
+                        draggable={false}
+                      />
+
+                    </ImageContainer>
+                  </>
+                )}
+           </ResultBox>
 
         </ResultContent>
       </ResultContainer>
