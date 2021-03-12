@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Montserrat', sans-serif;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
 `
 
 export default GlobalStyle

@@ -8,6 +8,7 @@ import {
   Main,
   FormContainer,
   FormContent,
+  FormTitle,
   ResultContainer,
   ResultContent,
   ResultBox,
@@ -103,6 +104,7 @@ export default function Home(): JSX.Element {
     if (dataValidated) {
       try {
         setScreenState(screenStatesMessages.loading)
+        window.scrollTo(0, document.body.scrollHeight)
 
         const response = await (await api.post('/predict', dataRequest)).data.type
 
@@ -122,6 +124,8 @@ export default function Home(): JSX.Element {
     <Main>
       <FormContainer>
         <FormContent>
+          <FormTitle>Iris Classifier</FormTitle>
+
           <Form onSubmit={handleSubmit}>
             <Input
               key="input_sepalLength"
@@ -164,13 +168,15 @@ export default function Home(): JSX.Element {
                 {errors.substring(17)}
               </ErrorDiv>}
 
-            <ButtonSubmit label="Predict" type="submit"/>
+            <ButtonSubmit type="submit">
+              Predict
+            </ButtonSubmit>
 
           </Form>
         </FormContent>
       </FormContainer>
 
-      <ResultContainer>
+      <ResultContainer id="result">
         <ResultContent>
           <Title>Result</Title>
             <ResultBox>

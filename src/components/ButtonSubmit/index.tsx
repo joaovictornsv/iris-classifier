@@ -1,16 +1,14 @@
 import React from 'react'
 import { Button } from './styles'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string
-}
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 const ButtonSubmit: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { label, ...rest } = props
+  const { children, ...rest } = props
 
   return (
     <Button {...rest}>
-      {label}
+      {children}
     </Button>
   )
 }
