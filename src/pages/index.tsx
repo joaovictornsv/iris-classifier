@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState, useEffect } from 'react'
 import * as yup from 'yup'
 import ButtonSubmit from '../components/ButtonSubmit'
 import Form from '../components/Form'
@@ -42,6 +42,12 @@ export default function Home(): JSX.Element {
   const [result, setResult] = useState<string>('')
   const [submited, setSubmited] = useState<boolean>(false)
   const [errors, setErrors] = useState<string>('')
+
+  useEffect(() => {
+    api.get('/')
+      .then(response => console.log(response.data))
+      .catch(err => console.error(err))
+  }, [])
 
   const validation = yup.object().shape({
     sepal_length: yup.number().min(0).required().typeError('Sepal length must be a number'),
@@ -106,7 +112,7 @@ export default function Home(): JSX.Element {
         setScreenState(screenStatesMessages.loading)
         window.scrollTo(0, document.body.scrollHeight)
 
-        const response = await (await api.post('/predict', dataRequest)).data.type
+        const response = await (await api.post('/api/predict', dataRequest)).data.type
 
         if (!response) {
           throw Error('An error occurred')
