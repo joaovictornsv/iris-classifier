@@ -11,13 +11,96 @@ import api from '../services/api'
 
 import { useLoading, Bars } from '@agney/react-loading'
 
-interface ImageProps {
-  src: string;
-  alt?: string
+interface ImagesCollection {
+  [index: string]: {
+    src: string;
+    alt?: string
+  };
 }
 
-interface ImagesCollection {
-  [index: string]: ImageProps;
+interface IReady {
+  result: string
+}
+
+interface IShowError {
+  error: string;
+}
+
+const screenStatesMessages = {
+  empty: 'Please fill out the form to predict the class',
+  loading: 'Loading',
+  ready: 'The predict is',
+  error: 'An error occurred'
+}
+
+const irisImages: ImagesCollection = {
+  setosa: {
+    src: '/images/iris_setosa.jpg',
+    alt: 'Iris Setosa'
+  },
+  versicolor: {
+    src: '/images/iris_versicolor.jpg',
+    alt: 'Iris Versicolor'
+  },
+  virginica: {
+    src: '/images/iris_virginica.jpg',
+    alt: 'Iris Virginica'
+  }
+}
+
+const ShowError = ({ error }: IShowError): JSX.Element => {
+  return (
+    <ErrorDiv>
+      {error.substring(17)}
+    </ErrorDiv>
+  )
+}
+
+const Ready = ({ result }: IReady): JSX.Element => {
+  return (
+    <>
+      <Result.Box.Title>
+        {result.toUpperCase()}
+      </Result.Box.Title>
+      <Result.ImageContainer>
+
+        <Result.ImageContainer.Image
+          src={irisImages[result].src}
+          alt={irisImages[result].alt}
+          draggable={false}
+        />
+
+      </Result.ImageContainer>
+    </>
+  )
+}
+
+const Empty = (): JSX.Element => {
+  return (
+    <Result.Box.Title>
+      {screenStatesMessages.empty}
+    </Result.Box.Title>
+  )
+}
+
+const Loading = (): JSX.Element => {
+  const { containerProps, indicatorEl } = useLoading({
+    loading: true,
+    indicator: <Bars width="100" color="white"/>
+  })
+
+  return (
+    <>
+      <Result.Box.Title>
+        {screenStatesMessages.loading}
+      </Result.Box.Title>
+      <Result.ImageContainer>
+        <section {...containerProps}>
+          {indicatorEl}
+        </section>
+      </Result.ImageContainer>
+    </>
+  )
 }
 
 export default function Home(): JSX.Element {
@@ -43,33 +126,6 @@ export default function Home(): JSX.Element {
     sepal_width: yup.number().min(0).required().typeError('Sepal width must be a number'),
     petal_length: yup.number().min(0).required().typeError('Petal length must be a number'),
     petal_width: yup.number().min(0).required().typeError('Petal width must be a number')
-  })
-
-  const screenStatesMessages = {
-    empty: 'Please fill out the form to predict the class',
-    loading: 'Loading',
-    ready: 'The predict is',
-    error: 'An error occurred'
-  }
-
-  const irisImages: ImagesCollection = {
-    setosa: {
-      src: '/images/iris_setosa.jpg',
-      alt: 'Iris Setosa'
-    },
-    versicolor: {
-      src: '/images/iris_versicolor.jpg',
-      alt: 'Iris Versicolor'
-    },
-    virginica: {
-      src: '/images/iris_virginica.jpg',
-      alt: 'Iris Virginica'
-    }
-  }
-
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-    indicator: <Bars width="100" color="white"/>
   })
 
   async function handleSubmit(e: FormEvent) {
@@ -158,10 +214,7 @@ export default function Home(): JSX.Element {
               required
             />
 
-            {submited && errors &&
-              <ErrorDiv>
-                {errors.substring(17)}
-              </ErrorDiv>}
+            {submited && errors && <ShowError error={errors.substring(17)} />}
 
             <ButtonSubmit type="submit">
               Predict
@@ -174,47 +227,15 @@ export default function Home(): JSX.Element {
       <Result id="result">
         <Result.Content>
           <Result.Title>Result</Result.Title>
+
             <Result.Box>
 
-            {screenState === screenStatesMessages.empty &&
-                (
-                  <Result.Box.Title>
-                    {screenState}
-                  </Result.Box.Title>
-                )
-                }
+              {screenState === screenStatesMessages.empty && <Empty/>}
 
-              {screenState === screenStatesMessages.loading &&
-                (
-                  <>
-                    <Result.Box.Title>
-                      {screenState}
-                    </Result.Box.Title>
-                    <Result.ImageContainer>
-                      <section {...containerProps}>
-                        {indicatorEl}
-                      </section>
-                    </Result.ImageContainer>
-                  </>
-                )
-                }
-                {screenState === screenStatesMessages.ready &&
-                (
-                  <>
-                    <Result.Box.Title>
-                      {result.toUpperCase()}
-                    </Result.Box.Title>
-                    <Result.ImageContainer>
+              {screenState === screenStatesMessages.loading && <Loading/>}
 
-                      <Result.ImageContainer.Image
-                        src={irisImages[result].src}
-                        alt={irisImages[result].alt}
-                        draggable={false}
-                      />
+              {screenState === screenStatesMessages.ready && <Ready result={result} />}
 
-                    </Result.ImageContainer>
-                  </>
-                )}
            </Result.Box>
 
         </Result.Content>
