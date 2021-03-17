@@ -15,7 +15,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <link
           rel="icon"
           href="https://www.flaticon.com/svg/vstatic/svg/4139/4139394.svg?token=exp=1615857631~hmac=bd6b2e72fce4f65cbb6278e53e4de5c4"
-          type="image/x-icon"
         />
 
       </Head>

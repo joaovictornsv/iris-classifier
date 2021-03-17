@@ -1,22 +1,11 @@
 import React, { FormEvent, useState, useEffect } from 'react'
 import * as yup from 'yup'
 import ButtonSubmit from '../components/ButtonSubmit'
-import Form from '../components/Form'
 import Input from '../components/Input'
 import ErrorDiv from '../components/ErrorDiv'
-import {
-  Main,
-  FormContainer,
-  FormContent,
-  FormTitle,
-  ResultContainer,
-  ResultContent,
-  ResultBox,
-  ResultTitle,
-  Title,
-  ImageContainer,
-  Image
-} from '../styles/pages'
+import Main from '../styles/pages/Main'
+import Form from '../styles/pages/Form'
+import Result from '../styles/pages/Result'
 
 import api from '../services/api'
 
@@ -24,7 +13,7 @@ import { useLoading, Bars } from '@agney/react-loading'
 
 interface ImageProps {
   src: string;
-  alt: string
+  alt?: string
 }
 
 interface ImagesCollection {
@@ -128,9 +117,9 @@ export default function Home(): JSX.Element {
 
   return (
     <Main>
-      <FormContainer>
-        <FormContent>
-          <FormTitle>Iris Classifier</FormTitle>
+      <Form.Container>
+        <Form.Content>
+          <Form.Title>Iris Classifier</Form.Title>
 
           <Form onSubmit={handleSubmit}>
             <Input
@@ -179,57 +168,57 @@ export default function Home(): JSX.Element {
             </ButtonSubmit>
 
           </Form>
-        </FormContent>
-      </FormContainer>
+        </Form.Content>
+      </Form.Container>
 
-      <ResultContainer id="result">
-        <ResultContent>
-          <Title>Result</Title>
-            <ResultBox>
+      <Result id="result">
+        <Result.Content>
+          <Result.Title>Result</Result.Title>
+            <Result.Box>
 
             {screenState === screenStatesMessages.empty &&
                 (
-                  <ResultTitle>
+                  <Result.Box.Title>
                     {screenState}
-                  </ResultTitle>
+                  </Result.Box.Title>
                 )
                 }
 
               {screenState === screenStatesMessages.loading &&
                 (
                   <>
-                    <ResultTitle>
+                    <Result.Box.Title>
                       {screenState}
-                    </ResultTitle>
-                    <ImageContainer>
+                    </Result.Box.Title>
+                    <Result.ImageContainer>
                       <section {...containerProps}>
                         {indicatorEl}
                       </section>
-                    </ImageContainer>
+                    </Result.ImageContainer>
                   </>
                 )
                 }
                 {screenState === screenStatesMessages.ready &&
                 (
                   <>
-                    <ResultTitle>
+                    <Result.Box.Title>
                       {result.toUpperCase()}
-                    </ResultTitle>
-                    <ImageContainer>
+                    </Result.Box.Title>
+                    <Result.ImageContainer>
 
-                      <Image
+                      <Result.ImageContainer.Image
                         src={irisImages[result].src}
                         alt={irisImages[result].alt}
                         draggable={false}
                       />
 
-                    </ImageContainer>
+                    </Result.ImageContainer>
                   </>
                 )}
-           </ResultBox>
+           </Result.Box>
 
-        </ResultContent>
-      </ResultContainer>
+        </Result.Content>
+      </Result>
     </Main>
   )
 }
