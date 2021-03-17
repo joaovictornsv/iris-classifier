@@ -11,6 +11,8 @@ import api from '../services/api'
 
 import { useLoading, Bars } from '@agney/react-loading'
 
+// Interfaces
+
 interface ImagesCollection {
   [index: string]: {
     src: string;
@@ -25,6 +27,8 @@ interface IReady {
 interface IShowError {
   error: string;
 }
+
+// Global consts
 
 const screenStatesMessages = {
   empty: 'Please fill out the form to predict the class',
@@ -47,6 +51,8 @@ const irisImages: ImagesCollection = {
     alt: 'Iris Virginica'
   }
 }
+
+// Secondary Screens
 
 const ShowError = ({ error }: IShowError): JSX.Element => {
   return (
@@ -103,8 +109,18 @@ const Loading = (): JSX.Element => {
   )
 }
 
+const ErrorScreen = (): JSX.Element => {
+  return (
+    <Result.Box.Title>
+      {screenStatesMessages.error}
+    </Result.Box.Title>
+  )
+}
+
+// Principal Screen
+
 export default function Home(): JSX.Element {
-  const [screenState, setScreenState] = useState<string>('Please fill out the form to predict the class')
+  const [screenState, setScreenState] = useState<string>(screenStatesMessages.empty)
 
   const [sepalLength, setSepalLength] = useState<string>('')
   const [sepalWidth, setSepalWidth] = useState<string>('')
@@ -173,6 +189,7 @@ export default function Home(): JSX.Element {
 
   return (
     <Main>
+
       <Form.Container>
         <Form.Content>
           <Form.Title>Iris Classifier</Form.Title>
@@ -236,10 +253,13 @@ export default function Home(): JSX.Element {
 
               {screenState === screenStatesMessages.ready && <Ready result={result} />}
 
+              {screenState === screenStatesMessages.error && <ErrorScreen />}
+
            </Result.Box>
 
         </Result.Content>
       </Result>
+
     </Main>
   )
 }
