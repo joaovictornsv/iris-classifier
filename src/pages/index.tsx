@@ -57,7 +57,7 @@ const irisImages: ImagesCollection = {
 const ShowError = ({ error }: IShowError): JSX.Element => {
   return (
     <ErrorDiv>
-      {error.substring(17)}
+      {error}
     </ErrorDiv>
   )
 }

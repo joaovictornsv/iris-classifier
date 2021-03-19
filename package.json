@@ -12,6 +12,7 @@
     "next": "latest",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-icons": "^4.2.0",
     "styled-components": "^5.0.0",
     "yup": "^0.32.9"
   },

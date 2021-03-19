@@ -1,5 +1,6 @@
 import React, { ReactChild, ReactChildren } from 'react'
-import { Div, Icon } from './styles'
+import { MdError } from 'react-icons/md'
+import { Div } from './styles'
 
 interface DivProps {
   children: ReactChild | ReactChildren
@@ -8,7 +9,7 @@ interface DivProps {
 function Error({ children } : DivProps): JSX.Element {
   return (
     <Div>
-      <Icon className="material-icons">&#xe88e;</Icon>
+      <MdError className="icon"/>
       {children}
     </Div>
   )

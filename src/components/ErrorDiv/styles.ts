@@ -11,9 +11,9 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
 
-export const Icon = styled.span`
-  margin-right: 8px;
-  font-size: 22px;
+  .icon {
+    font-size: 22px;
+    margin-right: 8px;
+  }
 `
