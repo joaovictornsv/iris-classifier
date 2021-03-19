@@ -35,7 +35,7 @@ const Ready = ({ result }: IReady): JSX.Element => {
   return (
     <>
       <Result.Box.Title>
-        {result.toUpperCase()}
+        {result?.toUpperCase()}
       </Result.Box.Title>
       <Result.ImageContainer>
 
