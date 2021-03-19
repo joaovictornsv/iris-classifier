@@ -7,7 +7,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@agney/react-loading": "^0.1.2",
     "@crello/react-lottie": "^0.0.11",
     "axios": "^0.21.1",
     "next": "latest",
