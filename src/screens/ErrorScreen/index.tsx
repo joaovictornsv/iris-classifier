@@ -1,5 +1,5 @@
 import React from 'react'
-import Result from '../../../styles/pages/Result'
+import Result from '../../styles/pages/Result'
 
 const ErrorScreen = (): JSX.Element => {
   return (

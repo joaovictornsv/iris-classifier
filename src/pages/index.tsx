@@ -9,7 +9,7 @@ import Result from '../styles/pages/Result'
 
 import api from '../services/api'
 
-import Empty from './components/Empty'
+import Empty from '../screens/Empty'
 
 // Interfaces
 
@@ -36,9 +36,9 @@ const ShowError = ({ error }: IShowError): JSX.Element => {
   )
 }
 
-const Ready = lazy(() => import('../pages/components/Ready'))
-const Loading = lazy(() => import('../pages/components/Loading'))
-const ErrorScreen = lazy(() => import('../pages/components/ErrorScreen'))
+const Ready = lazy(() => import('../screens/Ready'))
+const Loading = lazy(() => import('../screens/Loading'))
+const ErrorScreen = lazy(() => import('../screens/ErrorScreen'))
 
 // Principal Screen
 

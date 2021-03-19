@@ -1,9 +1,9 @@
 import React from 'react'
-import Result from '../../../styles/pages/Result'
+import Result from '../../styles/pages/Result'
 
-import irisSetosa from '../../../assets/images/iris_setosa.jpg'
-import irisVersicolor from '../../../assets/images/iris_versicolor.jpg'
-import irisVirginica from '../../../assets/images/iris_virginica.jpg'
+import irisSetosa from '../../assets/images/iris_setosa.jpg'
+import irisVersicolor from '../../assets/images/iris_versicolor.jpg'
+import irisVirginica from '../../assets/images/iris_virginica.jpg'
 
 interface IReady {
   result: string

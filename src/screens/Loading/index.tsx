@@ -1,8 +1,8 @@
 import React from 'react'
-import Result from '../../../styles/pages/Result'
+import Result from '../../styles/pages/Result'
 import { Lottie } from '@crello/react-lottie'
 
-import loadingAnimation from '../../../assets/animations/loading.json'
+import loadingAnimation from '../../assets/animations/loading.json'
 
 const Loading = (): JSX.Element => {
   return (
