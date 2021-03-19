@@ -1,6 +1,5 @@
-import React, { FormEvent, useState, useEffect } from 'react'
+import React, { FormEvent, useState, useEffect, lazy, Suspense } from 'react'
 import * as yup from 'yup'
-import { Lottie } from '@crello/react-lottie'
 import ButtonSubmit from '../components/ButtonSubmit'
 import Input from '../components/Input'
 import ErrorDiv from '../components/ErrorDiv'
@@ -8,26 +7,11 @@ import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
 
-import irisSetosa from '../assets/images/iris_setosa.jpg'
-import irisVersicolor from '../assets/images/iris_versicolor.jpg'
-import irisVirginica from '../assets/images/iris_virginica.jpg'
-
-import loadingAnimation from '../assets/animations/loading.json'
-
 import api from '../services/api'
 
+import Empty from './components/Empty'
+
 // Interfaces
-
-interface ImagesCollection {
-  [index: string]: {
-    src: string;
-    alt?: string
-  };
-}
-
-interface IReady {
-  result: string
-}
 
 interface IShowError {
   error: string;
@@ -42,21 +26,6 @@ const screenStatesMessages = {
   error: 'An error occurred'
 }
 
-const irisImages: ImagesCollection = {
-  setosa: {
-    src: irisSetosa,
-    alt: 'Iris Setosa'
-  },
-  versicolor: {
-    src: irisVersicolor,
-    alt: 'Iris Versicolor'
-  },
-  virginica: {
-    src: irisVirginica,
-    alt: 'Iris Virginica'
-  }
-}
-
 // Secondary Screens
 
 const ShowError = ({ error }: IShowError): JSX.Element => {
@@ -67,58 +36,9 @@ const ShowError = ({ error }: IShowError): JSX.Element => {
   )
 }
 
-const Ready = ({ result }: IReady): JSX.Element => {
-  return (
-    <>
-      <Result.Box.Title>
-        {result.toUpperCase()}
-      </Result.Box.Title>
-      <Result.ImageContainer>
-
-        <Result.ImageContainer.Image
-          src={irisImages[result].src}
-          alt={irisImages[result].alt}
-          draggable={false}
-        />
-
-      </Result.ImageContainer>
-    </>
-  )
-}
-
-const Empty = (): JSX.Element => {
-  return (
-    <Result.Box.Title>
-      {screenStatesMessages.empty}
-    </Result.Box.Title>
-  )
-}
-
-const Loading = (): JSX.Element => {
-  return (
-    <>
-      <Result.Box.Title>
-        {screenStatesMessages.loading}
-      </Result.Box.Title>
-      <Result.ImageContainer>
-      <Lottie
-          width="150px"
-          height="150px"
-          className="lottie-container basic"
-          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
-        />
-      </Result.ImageContainer>
-    </>
-  )
-}
-
-const ErrorScreen = (): JSX.Element => {
-  return (
-    <Result.Box.Title>
-      {screenStatesMessages.error}
-    </Result.Box.Title>
-  )
-}
+const Ready = lazy(() => import('../pages/components/Ready'))
+const Loading = lazy(() => import('../pages/components/Loading'))
+const ErrorScreen = lazy(() => import('../pages/components/ErrorScreen'))
 
 // Principal Screen
 
@@ -254,14 +174,25 @@ export default function Home(): JSX.Element {
 
             <Result.Box>
 
-              {screenState === screenStatesMessages.empty && <Empty/>}
+                {screenState === screenStatesMessages.empty && <Empty/>}
 
-              {screenState === screenStatesMessages.loading && <Loading/>}
+                {screenState === screenStatesMessages.loading && (
+                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
+                    <Loading />
+                  </Suspense>
+                )}
 
-              {screenState === screenStatesMessages.ready && <Ready result={result} />}
+                {screenState === screenStatesMessages.ready && (
+                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
+                    <Ready result={result} />
+                  </Suspense>
+                )}
 
-              {screenState === screenStatesMessages.error && <ErrorScreen />}
-
+                {screenState === screenStatesMessages.error && (
+                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
+                    <ErrorScreen />
+                  </Suspense>
+                )}
            </Result.Box>
 
         </Result.Content>

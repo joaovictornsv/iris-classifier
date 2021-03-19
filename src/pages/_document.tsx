@@ -33,11 +33,6 @@ export default class MyDocument extends Document {
           <Head>
             <title>Iris</title>
 
-            <link
-              href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet"
-            />
-
             <meta
               name="description"
               content="Iris is a project that uses a neural network to predict the class of the iris flower."
