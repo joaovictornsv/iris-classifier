@@ -15,7 +15,7 @@ export const Input = styled.input`
     border: 1px solid #1e2022;
   }
 `
-export const Label = styled.span`
+export const Label = styled.label`
   color: #1e2022;
   font-size: 18px;
   margin-bottom: 5px;

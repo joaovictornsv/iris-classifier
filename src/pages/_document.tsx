@@ -1,5 +1,5 @@
 import React from 'react'
-import Document, { DocumentContext, DocumentInitialProps } from 'next/document'
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 export default class MyDocument extends Document {
@@ -25,5 +25,28 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal()
     }
+  }
+
+  render(): JSX.Element {
+    return (
+        <Html lang="pt-BR">
+          <Head>
+            <title>Iris</title>
+            <link
+              href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet"
+            />
+            <link
+              rel="icon"
+              href="https://www.flaticon.com/svg/vstatic/svg/4139/4139394.svg?token=exp=1615857631~hmac=bd6b2e72fce4f65cbb6278e53e4de5c4"
+            />
+          </Head>
+
+          <body>
+            <Main />
+            <NextScript />
+          </body>
+      </Html>
+    )
   }
 }

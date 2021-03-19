@@ -196,6 +196,7 @@ export default function Home(): JSX.Element {
 
           <Form onSubmit={handleSubmit}>
             <Input
+              id="input_sepalLength"
               key="input_sepalLength"
               type="text"
               label="Sepal length"
@@ -206,6 +207,7 @@ export default function Home(): JSX.Element {
 
             <Input
               key="input_sepalWidth"
+              id="input_sepalWidth"
               type="text"
               label="Sepal width"
               value={sepalWidth}
@@ -215,6 +217,7 @@ export default function Home(): JSX.Element {
 
             <Input
               key="input_petalLength"
+              id="input_petalLength"
               type="text"
               label="Petal length"
               value={petalLength}
@@ -224,6 +227,7 @@ export default function Home(): JSX.Element {
 
             <Input
               key="input_petalWidth"
+              id="input_petalWidth"
               type="text"
               label="Petal width"
               value={petalWidth}
