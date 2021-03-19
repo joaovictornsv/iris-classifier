@@ -1,5 +1,6 @@
 import React, { FormEvent, useState, useEffect } from 'react'
 import * as yup from 'yup'
+import { Lottie } from '@crello/react-lottie'
 import ButtonSubmit from '../components/ButtonSubmit'
 import Input from '../components/Input'
 import ErrorDiv from '../components/ErrorDiv'
@@ -11,9 +12,9 @@ import irisSetosa from '../assets/images/iris_setosa.jpg'
 import irisVersicolor from '../assets/images/iris_versicolor.jpg'
 import irisVirginica from '../assets/images/iris_virginica.jpg'
 
-import api from '../services/api'
+import loadingAnimation from '../assets/animations/loading.json'
 
-import { useLoading, Bars } from '@agney/react-loading'
+import api from '../services/api'
 
 // Interfaces
 
@@ -94,22 +95,18 @@ const Empty = (): JSX.Element => {
 }
 
 const Loading = (): JSX.Element => {
-  const bars = <Bars width="100" color="white"/>
-
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-    indicator: bars
-  })
-
   return (
     <>
       <Result.Box.Title>
         {screenStatesMessages.loading}
       </Result.Box.Title>
       <Result.ImageContainer>
-        <section {...containerProps}>
-          {indicatorEl}
-        </section>
+      <Lottie
+          width="150px"
+          height="150px"
+          className="lottie-container basic"
+          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
+        />
       </Result.ImageContainer>
     </>
   )
