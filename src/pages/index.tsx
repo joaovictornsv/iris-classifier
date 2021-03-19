@@ -7,6 +7,10 @@ import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
 
+import irisSetosa from '../assets/images/iris_setosa.jpg'
+import irisVersicolor from '../assets/images/iris_versicolor.jpg'
+import irisVirginica from '../assets/images/iris_virginica.jpg'
+
 import api from '../services/api'
 
 import { useLoading, Bars } from '@agney/react-loading'
@@ -39,15 +43,15 @@ const screenStatesMessages = {
 
 const irisImages: ImagesCollection = {
   setosa: {
-    src: '/images/iris_setosa.jpg',
+    src: irisSetosa,
     alt: 'Iris Setosa'
   },
   versicolor: {
-    src: '/images/iris_versicolor.jpg',
+    src: irisVersicolor,
     alt: 'Iris Versicolor'
   },
   virginica: {
-    src: '/images/iris_virginica.jpg',
+    src: irisVirginica,
     alt: 'Iris Virginica'
   }
 }
@@ -90,9 +94,11 @@ const Empty = (): JSX.Element => {
 }
 
 const Loading = (): JSX.Element => {
+  const bars = <Bars width="100" color="white"/>
+
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
-    indicator: <Bars width="100" color="white"/>
+    indicator: bars
   })
 
   return (

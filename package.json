@@ -10,6 +10,7 @@
     "@agney/react-loading": "^0.1.2",
     "axios": "^0.21.1",
     "next": "latest",
+    "next-images": "^1.7.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-icons": "^4.2.0",
