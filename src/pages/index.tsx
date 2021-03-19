@@ -20,10 +20,10 @@ interface IShowError {
 // Global consts
 
 const screenStatesMessages = {
-  empty: 'Please fill out the form to predict the class',
-  loading: 'Loading',
-  ready: 'The predict is',
-  error: 'An error occurred'
+  empty: 'empty',
+  loading: 'loading',
+  ready: 'ready',
+  error: 'error'
 }
 
 // Secondary Screens
