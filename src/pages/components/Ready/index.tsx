@@ -40,8 +40,8 @@ const Ready = ({ result }: IReady): JSX.Element => {
       <Result.ImageContainer>
 
         <Result.ImageContainer.Image
-          src={irisImages[result].src}
-          alt={irisImages[result].alt}
+          src={irisImages[result]?.src}
+          alt={irisImages[result]?.alt}
           draggable={false}
         />
 
