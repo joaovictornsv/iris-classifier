@@ -6,7 +6,7 @@ interface DivProps {
   children: ReactChild | ReactChildren
 }
 
-function Error({ children } : DivProps): JSX.Element {
+const ErrorDiv: React.FC<DivProps> = ({ children } : DivProps): JSX.Element => {
   return (
     <Div>
       <MdError className="icon"/>
@@ -15,4 +15,4 @@ function Error({ children } : DivProps): JSX.Element {
   )
 }
 
-export default Error
+export default ErrorDiv
