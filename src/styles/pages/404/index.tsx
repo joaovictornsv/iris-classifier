@@ -15,7 +15,7 @@ const Widget404 = (): JSX.Element => {
       />
 
       <Message>
-        Está perdido? Pegue o caminho de volta clicando <a href="https://iris-classifier.vercel.app" target="_blank" rel="noopener noreferrer">aqui</a>.
+        Está perdido? Pegue o caminho de volta clicando <a href="https://iris-classifier.vercel.app">aqui</a>.
       </Message>
     </Container>
   )
