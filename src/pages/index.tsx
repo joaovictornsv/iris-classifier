@@ -1,11 +1,11 @@
-import React, { FormEvent, useState, useEffect, lazy, Suspense } from 'react'
+import React, { FormEvent, useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
 import { Input, ButtonSubmit, ErrorDiv } from '../components'
 import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
 
-import api from '../services/api'
+import { predictClass } from '../services/api'
 
 import Empty from '../screens/Empty'
 
@@ -52,12 +52,6 @@ export default function Home(): JSX.Element {
   const [submited, setSubmited] = useState<boolean>(false)
   const [errors, setErrors] = useState<string>('')
 
-  useEffect(() => {
-    api.get('/')
-      .then(response => console.log(response.data))
-      .catch(err => console.error(err))
-  }, [])
-
   const validation = yup.object().shape({
     sepal_length: yup.number().min(0).required().typeError('Sepal length must be a number'),
     sepal_width: yup.number().min(0).required().typeError('Sepal width must be a number'),
@@ -94,7 +88,7 @@ export default function Home(): JSX.Element {
         setScreenState(screenStatesMessages.loading)
         window.scrollTo(0, document.body.scrollHeight)
 
-        const response = await (await api.post('/api/predict', dataRequest)).data.type
+        const response = (await predictClass(dataRequest)).data.type
 
         if (!response) {
           throw Error('An error occurred')

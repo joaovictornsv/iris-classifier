@@ -31,8 +31,6 @@ export default class MyDocument extends Document {
     return (
         <Html lang="pt-BR">
           <Head>
-            <title>Iris</title>
-
             <meta
               name="description"
               content="Iris is a project that uses a neural network to predict the class of the iris flower."
