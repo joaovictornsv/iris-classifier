@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  background-color: #00917c;
-  color: #FFFFFF;
+  background-color: ${props => props.theme.colors.submit};
+  color: ${props => props.theme.colors.white};
   font-size: 18px;
+  font-weight: bold;
   outline: none;
   border: none;
   width: 150px;
@@ -14,6 +15,6 @@ export const Button = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: #025955;
+    background-color: ${props => props.theme.colors.submitDark};
   }
 `

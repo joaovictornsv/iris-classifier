@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import styled, { StyledComponentBase } from 'styled-components'
+import styled, { DefaultTheme, StyledComponentBase } from 'styled-components'
 
-interface IResult extends StyledComponentBase<any, Record<string, never>> {
+interface IResult extends StyledComponentBase<any, DefaultTheme> {
   Content?: any;
   Title?: any;
   Box?: any | {
@@ -13,7 +13,7 @@ interface IResult extends StyledComponentBase<any, Record<string, never>> {
 }
 
 const Result: IResult = styled.div`
-  background-color: #6B5FBE;
+  background-color: ${props => props.theme.colors.primary};
   height: 100%;
   min-height: 100vh;
   width: 100%;
@@ -56,7 +56,7 @@ Result.Content = styled.div`
 `
 
 Result.Box = styled.div`
-  background-color: #877cdd;
+  background-color: ${props => props.theme.colors.primaryLight};
   border-radius: 8px;
   width: 420px;
   max-width: 85vw;
@@ -69,7 +69,7 @@ Result.Box = styled.div`
 `
 
 Result.Title = styled.h1`
-  color: #f0f5f9;
+  color: ${props => props.theme.colors.white};
   font-size: 36px;
   margin-top: 0;
   margin-bottom: 30px;
@@ -77,7 +77,7 @@ Result.Title = styled.h1`
 `
 
 Result.Box.Title = styled.h1`
-  color: #f0f5f9;
+  color: ${props => props.theme.colors.white};
   font-size: 26px;
   margin: 0 0 20px;
   text-align: center;

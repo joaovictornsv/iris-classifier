@@ -20,6 +20,6 @@ export const Message = styled.p`
   a {
     text-decoration: none;
     font-weight: bold;
-    color: #6B5FBE;
+    color: ${props => props.theme.colors.primary};
   }
 `

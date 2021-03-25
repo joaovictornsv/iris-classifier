@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Div = styled.div`
-  background-color: #ffc4d0;
-  color: #e23e57;
+  background-color: ${props => props.theme.error.background};
+  color: ${props => props.theme.error.text};
   padding: 6px;
   width: 300px;
   border-radius: 8px;

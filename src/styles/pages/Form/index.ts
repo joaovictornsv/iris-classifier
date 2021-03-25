@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import styled, { StyledComponentBase } from 'styled-components'
+import styled, { DefaultTheme, StyledComponentBase } from 'styled-components'
 
-interface IForm extends StyledComponentBase<any, Record<string, never>> {
+interface IForm extends StyledComponentBase<any, DefaultTheme> {
   Container?: any;
   Content?: any;
   Title?: any;
@@ -17,7 +17,7 @@ const Form: IForm = styled.form`
 `
 
 Form.Container = styled.div`
-  background-color: #f0f5f9;
+  background-color: ${props => props.theme.colors.white};
   min-height: 100vh;
   width: 40%;
   min-width: 420px;
@@ -46,7 +46,7 @@ Form.Content = styled.div`
 `
 
 Form.Title = styled.h1`
-  color: #6B5FBE;
+  color: ${props => props.theme.colors.primary};
   font-size: 36px;
   margin-top: 0;
   margin-bottom: 30px;
