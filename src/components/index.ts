@@ -1,5 +1,3 @@
-import Input from './Input'
-import ButtonSubmit from './ButtonSubmit'
-import ErrorDiv from './ErrorDiv'
-
-export { Input, ButtonSubmit, ErrorDiv }
+export { default as Input } from './Input'
+export { default as ButtonSubmit } from './ButtonSubmit'
+export { default as ErrorDiv } from './ErrorDiv'
