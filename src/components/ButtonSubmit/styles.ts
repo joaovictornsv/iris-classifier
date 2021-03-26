@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
   background-color: ${props => props.theme.colors.submit};
-  color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.background};
   font-size: 18px;
   font-weight: bold;
   outline: none;

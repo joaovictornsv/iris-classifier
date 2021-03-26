@@ -17,7 +17,7 @@ const Form: IForm = styled.form`
 `
 
 Form.Container = styled.div`
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.background};
   min-height: 100vh;
   width: 40%;
   min-width: 420px;

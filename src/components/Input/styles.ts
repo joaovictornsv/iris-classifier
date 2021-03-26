@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Input = styled.input`
   border: 1px solid ${props => props.theme.colors.primary};
-  background-color: ${props => props.theme.colors.white};
-  color: ${props => props.theme.font.black};
+  background-color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.font.primary};
   height: 36px;
   padding: 12px;
   width: 300px;
@@ -12,11 +12,11 @@ export const Input = styled.input`
   font-size: 18px;
 
   &:focus {
-    border: 1px solid ${props => props.theme.font.black};
+    border: 1px solid ${props => props.theme.font.primary};
   }
 `
 export const Label = styled.label`
-  color: ${props => props.theme.font.black};
+  color: ${props => props.theme.font.primary};
   font-size: 18px;
   margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;

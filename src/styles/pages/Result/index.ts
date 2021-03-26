@@ -69,7 +69,7 @@ Result.Box = styled.div`
 `
 
 Result.Title = styled.h1`
-  color: ${props => props.theme.colors.white};
+  color: #f0f5f9;
   font-size: 36px;
   margin-top: 0;
   margin-bottom: 30px;
@@ -77,7 +77,7 @@ Result.Title = styled.h1`
 `
 
 Result.Box.Title = styled.h1`
-  color: ${props => props.theme.colors.white};
+  color: #f0f5f9;
   font-size: 26px;
   margin: 0 0 20px;
   text-align: center;

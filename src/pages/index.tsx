@@ -1,5 +1,7 @@
 import React, { FormEvent, useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
+import Switch from '@material-ui/core/Switch'
+
 import { Input, ButtonSubmit, ErrorDiv } from '../components'
 import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
@@ -13,6 +15,10 @@ import Empty from '../screens/Empty'
 
 interface IShowError {
   error: string;
+}
+
+interface IHome {
+  toggleTheme(): void;
 }
 
 // Global consts
@@ -40,7 +46,7 @@ const ErrorScreen = lazy(() => import('../screens/ErrorScreen'))
 
 // Principal Screen
 
-export default function Home(): JSX.Element {
+export default function Home({ toggleTheme }: IHome): JSX.Element {
   const [screenState, setScreenState] = useState<string>(screenStatesMessages.empty)
 
   const [sepalLength, setSepalLength] = useState<string>('')
@@ -106,6 +112,11 @@ export default function Home(): JSX.Element {
     <Main>
 
       <Form.Container>
+        <Switch
+          color='default'
+          disableRipple
+          onChange={toggleTheme}
+        />
         <Form.Content>
           <Form.Title>Iris Classifier</Form.Title>
 
