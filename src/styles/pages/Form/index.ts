@@ -23,12 +23,12 @@ Form.Container = styled.div`
   min-width: 420px;
   max-width: 700px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @media(max-height: 450px) {
     padding: 20px 0;
-    align-items: flex-start;
   }
 
   @media(max-width: 900px) {
@@ -43,6 +43,8 @@ Form.Container = styled.div`
 Form.Content = styled.div`
   height: max-content;
   width: max-content;
+  margin: auto 0;
+  padding-bottom: 40px
 `
 
 Form.Title = styled.h1`

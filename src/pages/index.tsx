@@ -1,8 +1,7 @@
 import React, { FormEvent, useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
-import Switch from '@material-ui/core/Switch'
 
-import { Input, ButtonSubmit, ErrorDiv } from '../components'
+import { Input, ButtonSubmit, ErrorDiv, ThemeSwitch } from '../components'
 import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
@@ -112,9 +111,7 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
     <Main>
 
       <Form.Container>
-        <Switch
-          color='default'
-          disableRipple
+        <ThemeSwitch
           onChange={toggleTheme}
         />
         <Form.Content>
