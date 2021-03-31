@@ -3,14 +3,16 @@ import { MdError } from 'react-icons/md'
 import { Div } from './styles'
 
 interface DivProps {
-  children: ReactChild | ReactChildren
+  error?: string;
+  children?: ReactChild | ReactChildren
 }
 
-const ErrorDiv: React.FC<DivProps> = ({ children } : DivProps): JSX.Element => {
+const ErrorDiv: React.FC<DivProps> = ({ children, error } : DivProps): JSX.Element => {
   return (
     <Div>
       <MdError className="icon"/>
-      {children}
+      {children && children}
+      {error && error}
     </Div>
   )
 }

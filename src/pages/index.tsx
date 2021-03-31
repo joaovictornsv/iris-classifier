@@ -1,7 +1,7 @@
 import React, { FormEvent, useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
 
-import { Input, ButtonSubmit, ErrorDiv, ThemeSwitch } from '../components'
+import { Input, ButtonSubmit, ThemeSwitch } from '../components'
 import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
@@ -11,10 +11,6 @@ import { predictClass } from '../services/api'
 import Empty from '../screens/Empty'
 
 // Interfaces
-
-interface IShowError {
-  error: string;
-}
 
 interface IHome {
   toggleTheme(): void;
@@ -31,17 +27,18 @@ const screenStatesMessages = {
 
 // Secondary Screens
 
-const ShowError = ({ error }: IShowError): JSX.Element => {
-  return (
-    <ErrorDiv>
-      {error}
-    </ErrorDiv>
-  )
-}
-
+const ErrorDiv = lazy(() => import('../components/ErrorDiv'))
 const Ready = lazy(() => import('../screens/Ready'))
 const Loading = lazy(() => import('../screens/Loading'))
 const ErrorScreen = lazy(() => import('../screens/ErrorScreen'))
+
+const FallbackScreen = (): JSX.Element => {
+  return (
+    <Result.Box.Title>
+      Rendering...
+    </Result.Box.Title>
+  )
+}
 
 // Principal Screen
 
@@ -158,7 +155,12 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
               required
             />
 
-            {submited && errors && <ShowError error={errors.substring(17)} />}
+            {submited && errors && (
+               <Suspense fallback={<FallbackScreen />}>
+                <ErrorDiv error={errors.substring(17)} />
+              </Suspense>
+            )
+            }
 
             <ButtonSubmit type="submit">
               Predict
@@ -174,25 +176,25 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
 
             <Result.Box>
 
-                {screenState === screenStatesMessages.empty && <Empty/>}
+              {screenState === screenStatesMessages.empty && <Empty/>}
 
-                {screenState === screenStatesMessages.loading && (
-                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
-                    <Loading />
-                  </Suspense>
-                )}
+              {screenState === screenStatesMessages.loading && (
+                <Suspense fallback={<FallbackScreen />}>
+                  <Loading />
+                </Suspense>
+              )}
 
-                {screenState === screenStatesMessages.ready && (
-                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
-                    <Ready result={result} />
-                  </Suspense>
-                )}
+              {screenState === screenStatesMessages.ready && (
+                <Suspense fallback={<FallbackScreen />}>
+                  <Ready result={result} />
+                </Suspense>
+              )}
 
-                {screenState === screenStatesMessages.error && (
-                  <Suspense fallback={<Result.Box.Title>Rendering...</Result.Box.Title>}>
-                    <ErrorScreen />
-                  </Suspense>
-                )}
+              {screenState === screenStatesMessages.error && (
+                <Suspense fallback={<FallbackScreen />}>
+                  <ErrorScreen />
+                </Suspense>
+              )}
            </Result.Box>
 
         </Result.Content>
