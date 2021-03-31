@@ -4,11 +4,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   height: 40px;
-  max-width: 300px;
+  max-width: 90%;
   width: 100%;
   margin: 10px 0 30px;
 
-  @media(max-width: 1000px) {
+  @media(max-width: 900px) {
     justify-content: center;
   }
 `
