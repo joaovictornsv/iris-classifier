@@ -1,19 +1,16 @@
 import styled from 'styled-components'
 
 export const Div = styled.div`
-  background-color: ${props => props.theme.error.background};
   color: ${props => props.theme.error.text};
-  padding: 6px;
-  width: 300px;
-  border-radius: 8px;
-  font-size: 16px;
-  margin: 15px 0px;
+  padding: 8px 4px 0px;
+  font-size: 14px;
   display: flex;
+  width: 300px;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 
   .icon {
-    font-size: 22px;
-    margin-right: 8px;
+    font-size: 18px;
+    margin-right: 6px;
   }
 `

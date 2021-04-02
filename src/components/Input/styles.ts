@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Field } from 'formik'
 
-export const Input = styled.input`
+export const InputBase = styled(Field)`
   border: 1px solid ${props => props.theme.colors.primary};
   background-color: ${props => props.theme.colors.background};
   color: ${props => props.theme.font.primary};

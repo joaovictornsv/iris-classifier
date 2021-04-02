@@ -1,5 +1,7 @@
-import React, { FormEvent, useState, lazy, Suspense } from 'react'
+/* eslint-disable camelcase */
+import React, { useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
+import { Formik } from 'formik'
 
 import { Input, ButtonSubmit, ThemeSwitch } from '../components'
 import Main from '../styles/pages/Main'
@@ -14,6 +16,13 @@ import Empty from '../screens/Empty'
 
 interface IHome {
   toggleTheme(): void;
+}
+
+interface FormValues {
+  sepal_length: string,
+  sepal_width: string,
+  petal_length: string,
+  petal_width: string
 }
 
 // Global consts
@@ -45,44 +54,41 @@ const FallbackScreen = (): JSX.Element => {
 export default function Home({ toggleTheme }: IHome): JSX.Element {
   const [screenState, setScreenState] = useState<string>(screenStatesMessages.empty)
 
-  const [sepalLength, setSepalLength] = useState<string>('')
-  const [sepalWidth, setSepalWidth] = useState<string>('')
-  const [petalLength, setPetalLength] = useState<string>('')
-  const [petalWidth, setPetalWidth] = useState<string>('')
-
   const [result, setResult] = useState<string>('')
-  const [submited, setSubmited] = useState<boolean>(false)
-  const [errors, setErrors] = useState<string>('')
+
+  const initialFormValues: FormValues = {
+    sepal_length: '',
+    sepal_width: '',
+    petal_length: '',
+    petal_width: ''
+  }
 
   const validation = yup.object().shape({
-    sepal_length: yup.number().min(0).required().typeError('Sepal length must be a number'),
-    sepal_width: yup.number().min(0).required().typeError('Sepal width must be a number'),
-    petal_length: yup.number().min(0).required().typeError('Petal length must be a number'),
-    petal_width: yup.number().min(0).required().typeError('Petal width must be a number')
+    sepal_length: yup.number().min(0, 'Number must be greater than or equal to 0').required('This field is required').typeError('This field must be a number'),
+    sepal_width: yup.number().min(0, 'Number must be greater than or equal to 0').required('This field is required').typeError('This field must be a number'),
+    petal_length: yup.number().min(0, 'Number must be greater than or equal to 0').required('This field is required').typeError('This field must be a number'),
+    petal_width: yup.number().min(0, 'Number must be greater than or equal to 0').required('This field is required').typeError('This field must be a number')
   })
 
-  async function handleSubmit(e: FormEvent) {
+  async function handleSubmit(values: FormValues) {
     setScreenState(screenStatesMessages.empty)
 
-    e.preventDefault()
-    setSubmited(true)
-
     const dataRequest = {
-      sepal_length: Number(sepalLength),
-      sepal_width: Number(sepalWidth),
-      petal_length: Number(petalLength),
-      petal_width: Number(petalWidth)
+      sepal_length: Number(values.sepal_length),
+      sepal_width: Number(values.sepal_width),
+      petal_length: Number(values.petal_length),
+      petal_width: Number(values.petal_width)
     }
 
     let dataValidated = false
     await validation.validate(dataRequest)
       .then(() => {
         dataValidated = true
-        setErrors('')
+        // setErrors('')
       })
-      .catch((err) => {
+      .catch(() => {
         dataValidated = false
-        setErrors(err.toString())
+        // setErrors(err.toString())
       })
 
     if (dataValidated) {
@@ -114,62 +120,67 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
         <Form.Content>
           <Form.Title>Iris Classifier</Form.Title>
 
-          <Form onSubmit={handleSubmit}>
-            <Input
-              id="input_sepalLength"
-              key="input_sepalLength"
-              type="text"
-              label="Sepal length"
-              value={sepalLength}
-              onChange={(e) => setSepalLength(e.target.value.replace(',', '.'))}
-              required
-            />
+            <Formik
+              initialValues={initialFormValues}
+              validationSchema={validation}
+              onSubmit={ values => handleSubmit(values)}
+              validateOnChange={false}
+              validateOnBlur={false}
+            >
+              {({ errors, values }) => (
+              <Form translate="en" validateOnChange>
+                <Input
+                  id="sepal_length"
+                  name="sepal_length"
+                  type="text"
+                  label="Sepal Length"
+                  value={values.sepal_length}
+                  errors={errors?.sepal_length}
+                />
 
-            <Input
-              key="input_sepalWidth"
-              id="input_sepalWidth"
-              type="text"
-              label="Sepal width"
-              value={sepalWidth}
-              onChange={(e) => setSepalWidth(e.target.value.replace(',', '.'))}
-              required
-            />
+                <Input
+                  id="sepal_width"
+                  name="sepal_width"
+                  type="text"
+                  label="Sepal width"
+                  value={values.sepal_width}
+                  errors={errors?.sepal_width}
+                />
 
-            <Input
-              key="input_petalLength"
-              id="input_petalLength"
-              type="text"
-              label="Petal length"
-              value={petalLength}
-              onChange={(e) => setPetalLength(e.target.value.replace(',', '.'))}
-              required
-            />
+                <Input
+                  id="petal_length"
+                  name="petal_length"
+                  type="text"
+                  label="Petal length"
+                  value={values.petal_length}
+                  errors={errors?.petal_length}
+                />
 
-            <Input
-              key="input_petalWidth"
-              id="input_petalWidth"
-              type="text"
-              label="Petal width"
-              value={petalWidth}
-              onChange={(e) => setPetalWidth(e.target.value.replace(',', '.'))}
-              required
-            />
+                <Input
+                  id="petal_width"
+                  name="petal_width"
+                  type="text"
+                  label="Petal width"
+                  value={values.petal_width}
+                  errors={errors?.petal_width}
+                />
 
-            {submited && errors && (
-               <Suspense fallback={<FallbackScreen />}>
-                <ErrorDiv error={errors.substring(17)} />
-              </Suspense>
-            )
-            }
+                {/* {submited && errors && (
+                  <Suspense fallback={<FallbackScreen />}>
+                    <ErrorDiv error={errors.substring(17)} />
+                  </Suspense>
+                )
+                } */}
 
-            <ButtonSubmit type="submit">
-              Predict
-            </ButtonSubmit>
+                <ButtonSubmit type="submit">
+                  Predict
+                </ButtonSubmit>
 
-          </Form>
-        </Form.Content>
-      </Form.Container>
-
+              </Form>
+              )}
+            </Formik>
+          </Form.Content>
+        </Form.Container>
       <Result id="result">
         <Result.Content>
           <Result.Title>Result</Result.Title>
