@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import styled, { DefaultTheme, StyledComponentBase } from 'styled-components'
 import { Field } from 'formik'
 
-export const InputBase = styled(Field)`
+interface IInputBase extends StyledComponentBase<any, DefaultTheme> {
+  Label?: any;
+  Container?: any;
+}
+
+const InputBase: IInputBase = styled(Field)`
   border: 1px solid ${props => props.theme.colors.primary};
   background-color: ${props => props.theme.colors.background};
   color: ${props => props.theme.font.primary};
@@ -16,16 +22,19 @@ export const InputBase = styled(Field)`
     border: 1px solid ${props => props.theme.font.primary};
   }
 `
-export const Label = styled.label`
+
+InputBase.Label = styled.label`
   color: ${props => props.theme.font.primary};
   font-size: 18px;
   margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;
 `
 
-export const InputContainer = styled.div`
+InputBase.Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10px 0;
   width: max-content;
 `
+
+export default InputBase

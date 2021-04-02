@@ -36,7 +36,6 @@ const screenStatesMessages = {
 
 // Secondary Screens
 
-const ErrorDiv = lazy(() => import('../components/ErrorDiv'))
 const Ready = lazy(() => import('../screens/Ready'))
 const Loading = lazy(() => import('../screens/Loading'))
 const ErrorScreen = lazy(() => import('../screens/ErrorScreen'))
@@ -128,7 +127,7 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
               validateOnBlur={false}
             >
               {({ errors, values }) => (
-              <Form translate="en" validateOnChange>
+              <Form translate="en" >
                 <Input
                   id="sepal_length"
                   name="sepal_length"
