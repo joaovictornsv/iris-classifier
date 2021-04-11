@@ -21,6 +21,10 @@ const InputBase: IInputBase = styled(Field)`
   &:focus {
     border: 1px solid ${props => props.theme.font.primary};
   }
+
+  .invalid {
+    border: 1px solid ${props => props.theme.error.text} !important
+  }
 `
 
 InputBase.Label = styled.label`

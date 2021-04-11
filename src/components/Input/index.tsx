@@ -29,7 +29,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
   return (
     <InputBase.Container>
       <InputBase.Label htmlFor={id}>{label}</InputBase.Label>
-      <InputBase id={id} name={name} {...rest}/>
+      <InputBase className={errors && 'invalid'} id={id} name={name} {...rest}/>
 
       {errors && (
         <Suspense fallback={<Fallback />}>
