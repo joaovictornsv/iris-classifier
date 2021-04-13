@@ -1,41 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { lazy, Suspense } from 'react'
+import React from 'react'
 import InputBase from './styles'
-import { FallbackText } from './InputError'
 import { FieldAttributes } from 'formik'
+import InputError from './InputError'
 
 interface InputProps extends FieldAttributes<any> {
   label: string;
-  errors: string | undefined;
-}
-
-const InputError = lazy(() => import('./InputError'))
-
-const Fallback = (): JSX.Element => {
-  return (
-    <FallbackText>Loading...</FallbackText>
-  )
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
   const {
     label,
     errors,
-    id,
     name,
     ...rest
   } = props
 
   return (
     <InputBase.Container>
-      <InputBase.Label htmlFor={id}>{label}</InputBase.Label>
-      <InputBase className={errors && 'invalid'} id={id} name={name} {...rest}/>
+      <InputBase.Label htmlFor={name}>{label}</InputBase.Label>
+      <InputBase className={errors && 'invalid'} name={name} {...rest}/>
 
-      {errors && (
-        <Suspense fallback={<Fallback />}>
-          <InputError text={errors} />
-        </Suspense>
-      )}
+      <InputError text={errors || null} />
 
     </InputBase.Container>
   )

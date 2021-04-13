@@ -23,13 +23,13 @@ const InputBase: IInputBase = styled(Field)`
   }
 
   .invalid {
-    border: 1px solid ${props => props.theme.error.text} !important
+    border: 1px solid ${props => props.theme.error.text} !important;
   }
 `
 
 InputBase.Label = styled.label`
   color: ${props => props.theme.font.primary};
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;
 `
@@ -37,7 +37,10 @@ InputBase.Label = styled.label`
 InputBase.Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 10px 0;
+  margin-top: 12px;
+  &:nth-child(1) {
+    margin-top: 0;
+  }
   width: max-content;
 `
 

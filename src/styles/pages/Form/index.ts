@@ -24,7 +24,6 @@ FormBase.Container = styled.div`
   max-width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   @media(max-height: 450px) {
@@ -44,14 +43,13 @@ FormBase.Content = styled.div`
   height: max-content;
   width: max-content;
   margin: auto 0;
-  padding-bottom: 40px
 `
 
 FormBase.Title = styled.h1`
   color: ${props => props.theme.colors.primary};
-  font-size: 36px;
+  font-size: 26px;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: 'Montserrat', sans-serif;
 `
 

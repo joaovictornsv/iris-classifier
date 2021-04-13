@@ -123,13 +123,12 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
               initialValues={initialFormValues}
               validationSchema={validation}
               onSubmit={ values => handleSubmit(values)}
-              validateOnChange={false}
+              validateOnChange={true}
               validateOnBlur={false}
             >
               {({ errors, values }) => (
               <Form translate="en" >
                 <Input
-                  id="sepal_length"
                   name="sepal_length"
                   type="text"
                   label="Sepal Length"
@@ -138,7 +137,6 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
                 />
 
                 <Input
-                  id="sepal_width"
                   name="sepal_width"
                   type="text"
                   label="Sepal width"
@@ -147,7 +145,6 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
                 />
 
                 <Input
-                  id="petal_length"
                   name="petal_length"
                   type="text"
                   label="Petal length"
@@ -156,7 +153,6 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
                 />
 
                 <Input
-                  id="petal_width"
                   name="petal_width"
                   type="text"
                   label="Petal width"
