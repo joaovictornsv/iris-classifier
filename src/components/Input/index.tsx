@@ -1,18 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
-import { Input as InputElement, Label, InputContainer } from './styles'
+import InputBase from './styles'
+import { FieldAttributes } from 'formik'
+import InputError from './InputError'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  label: string
+interface InputProps extends FieldAttributes<any> {
+  label: string;
 }
 
 const Input: React.FC<InputProps> = (props: InputProps) => {
-  const { label, id, ...rest } = props
+  const {
+    label,
+    errors,
+    name,
+    ...rest
+  } = props
 
   return (
-    <InputContainer>
-      <Label htmlFor={id}>{label}</Label>
-      <InputElement id={id} {...rest}/>
-    </InputContainer>
+    <InputBase.Container>
+      <InputBase.Label htmlFor={name}>{label}</InputBase.Label>
+      <InputBase className={errors && 'invalid'} name={name} {...rest}/>
+
+      <InputError text={errors || null} />
+
+    </InputBase.Container>
   )
 }
 

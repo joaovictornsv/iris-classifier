@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import styled, { DefaultTheme, StyledComponentBase } from 'styled-components'
-
+import { Form } from 'formik'
 interface IForm extends StyledComponentBase<any, DefaultTheme> {
   Container?: any;
   Content?: any;
   Title?: any;
 }
 
-const Form: IForm = styled.form`
+const FormBase: IForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ const Form: IForm = styled.form`
   max-width: 400px
 `
 
-Form.Container = styled.div`
+FormBase.Container = styled.div`
   background-color: ${props => props.theme.colors.background};
   min-height: 100vh;
   width: 40%;
@@ -24,7 +24,6 @@ Form.Container = styled.div`
   max-width: 700px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   @media(max-height: 450px) {
@@ -40,19 +39,18 @@ Form.Container = styled.div`
   }
 `
 
-Form.Content = styled.div`
+FormBase.Content = styled.div`
   height: max-content;
   width: max-content;
   margin: auto 0;
-  padding-bottom: 40px
 `
 
-Form.Title = styled.h1`
+FormBase.Title = styled.h1`
   color: ${props => props.theme.colors.primary};
-  font-size: 36px;
+  font-size: 26px;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-family: 'Montserrat', sans-serif;
 `
 
-export default Form
+export default FormBase
