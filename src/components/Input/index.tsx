@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = (props: InputProps) => {
   return (
     <InputBase.Container>
       <InputBase.Label htmlFor={name}>{label}</InputBase.Label>
-      <InputBase invalid={errors && true} name={name} {...rest}/>
+      <InputBase invalid={errors && true} name={name} id={`id_${name}`} {...rest}/>
 
       <InputError text={errors || null} />
 
