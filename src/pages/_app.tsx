@@ -22,7 +22,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={isDark ? dark : light}>
-        <Component {...pageProps} toggleTheme={toggleTheme}/>
+        <Component {...pageProps} toggleTheme={toggleTheme} actualTheme={isDark ? dark.title : light.title}/>
       </ThemeProvider>
     </>
   )

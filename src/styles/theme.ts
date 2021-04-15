@@ -1,4 +1,6 @@
 export const light = {
+  title: 'light',
+
   colors: {
     primary: '#6B5FBE',
     primaryLight: '#877cdd',
@@ -18,6 +20,8 @@ export const light = {
 }
 
 export const dark = {
+  title: 'dark',
+
   colors: {
     primary: '#6B5FBE',
     primaryLight: '#877cdd',

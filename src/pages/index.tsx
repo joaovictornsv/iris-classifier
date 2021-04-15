@@ -16,6 +16,7 @@ import Empty from '../screens/Empty'
 
 interface IHome {
   toggleTheme(): void;
+  actualTheme: string;
 }
 
 interface FormValues {
@@ -50,7 +51,7 @@ const FallbackScreen = (): JSX.Element => {
 
 // Principal Screen
 
-export default function Home({ toggleTheme }: IHome): JSX.Element {
+export default function Home({ toggleTheme, actualTheme }: IHome): JSX.Element {
   const [screenState, setScreenState] = useState<string>(screenStatesMessages.empty)
 
   const [result, setResult] = useState<string>('')
@@ -115,6 +116,7 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
       <Form.Container>
         <ThemeSwitch
           onChange={toggleTheme}
+          actualTheme={actualTheme}
         />
         <Form.Content>
           <Form.Title>Iris Classifier</Form.Title>

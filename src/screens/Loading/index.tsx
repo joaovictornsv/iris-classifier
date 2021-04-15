@@ -12,11 +12,11 @@ const Loading = (): JSX.Element => {
       </Result.Box.Title>
       <Result.ImageContainer>
       <Lottie
-          width="150px"
-          height="150px"
-          className="lottie-container basic"
-          config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
-        />
+        width="150px"
+        height="150px"
+        className="lottie-container basic"
+        config={{ animationData: loadingAnimation, loop: true, autoplay: true }}
+      />
       </Result.ImageContainer>
     </>
   )

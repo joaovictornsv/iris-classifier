@@ -1,20 +1,55 @@
-import React from 'react'
-import Switch, { SwitchProps } from '@material-ui/core/Switch'
-import * as S from './styles'
+import React, { useState } from 'react'
+import { Lottie, ReactLottiePlayingState } from '@crello/react-lottie'
+import { Div } from './styles'
+import { FaSun, FaMoon } from 'react-icons/fa'
 
-const ThemeSwitch: React.FC<SwitchProps> = ({ ...props }: SwitchProps): JSX.Element => {
+import toggleAnimation from '../../assets/animations/toggle.json'
+
+interface IThemeSwitch {
+  onChange(): void;
+  actualTheme: string;
+}
+interface IAnimationState {
+  playingState: ReactLottiePlayingState,
+  direction: 1 | -1
+}
+
+const ThemeSwitch = ({ onChange, actualTheme }: IThemeSwitch): JSX.Element => {
+  const [animationState, setAnimationState] = useState<IAnimationState>({
+    playingState: 'stopped',
+    direction: 1
+  })
+
   return (
-    <S.Container>
-      <S.SwitchContainer>
-        <S.Label htmlFor="switch">🌙</S.Label>
-        <Switch
-          id="switch"
-          color='default'
-          disableRipple
-          {...props}
-        />
-      </S.SwitchContainer>
-    </S.Container>
+    <Div onClick={() => {
+      if (animationState.playingState === 'stopped') {
+        setAnimationState({ ...animationState, playingState: 'playing' })
+      }
+
+      if (animationState.playingState === 'playing') {
+        setAnimationState({ ...animationState, direction: animationState.direction === 1 ? -1 : 1 })
+      }
+
+      onChange()
+    }}>
+      <Lottie
+        width="50px"
+        height="50px"
+        className="lottie-container basic lottie"
+        playingState={animationState.playingState}
+        direction={animationState.direction}
+        speed={2}
+        config={{
+          animationData: toggleAnimation,
+          loop: false,
+          autoplay: false
+        }}
+      />
+
+      {actualTheme === 'light'
+        ? <FaSun className='sun icon'/>
+        : <FaMoon className='moon icon'/>}
+    </Div>
   )
 }
 

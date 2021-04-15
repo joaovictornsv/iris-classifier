@@ -1,29 +1,33 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Div = styled.div`
+  cursor: pointer;
   display: flex;
   justify-content: flex-start;
-  height: 40px;
+  align-items: center;
   max-width: 90%;
   width: 100%;
-  margin: 10px 0 30px;
+  margin-top: 8px;
 
-  @media(max-width: 900px) {
-    justify-content: center;
+  .icon {
+    color: ${props => props.theme.font.primary};
+    margin-left: 4px;
   }
-`
 
-export const SwitchContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  background-color: ${props => props.theme.colors.primary};
-  padding: 10px;
-  border-radius: 8px;
-`
+  .sun {
+    font-size: 24px;
+  }
 
-export const Label = styled.label`
-  font-size: 18px;
-  color: ${props => props.theme.font.primary};
+  .moon {
+    font-size: 20px;
+  }
+
+  .lottie {
+    svg {
+      path {
+        stroke: ${props => props.theme.font.primary};
+        stroke-width: 1.5px;
+      }
+    }
+  }
 `
