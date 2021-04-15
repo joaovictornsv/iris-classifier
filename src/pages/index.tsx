@@ -123,7 +123,7 @@ export default function Home({ toggleTheme }: IHome): JSX.Element {
               initialValues={initialFormValues}
               validationSchema={validation}
               onSubmit={ values => handleSubmit(values)}
-              validateOnChange={true}
+              validateOnChange={false}
               validateOnBlur={false}
             >
               {({ errors, values }) => (

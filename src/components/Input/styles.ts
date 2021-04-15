@@ -8,7 +8,7 @@ interface IInputBase extends StyledComponentBase<any, DefaultTheme> {
 }
 
 const InputBase: IInputBase = styled(Field)`
-  border: 1px solid ${props => props.theme.colors.primary};
+  border: 1px solid ${props => props.invalid ? props => props.theme.error.text : props => props.theme.colors.primary};
   background-color: ${props => props.theme.colors.background};
   color: ${props => props.theme.font.primary};
   height: 36px;
@@ -22,7 +22,7 @@ const InputBase: IInputBase = styled(Field)`
     border: 1px solid ${props => props.theme.font.primary};
   }
 
-  .invalid {
+  &:invalid {
     border: 1px solid ${props => props.theme.error.text} !important;
   }
 `
