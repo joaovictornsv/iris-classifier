@@ -13,7 +13,9 @@ interface IResult extends StyledComponentBase<any, DefaultTheme> {
 }
 
 const Result: IResult = styled.div`
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${({ theme }) => theme.title === 'light'
+                      ? ({ theme }) => theme.colors.primary
+                      : '#2d2f33'};
   min-height: 100vh;
   width: 100%;
   display: flex;
