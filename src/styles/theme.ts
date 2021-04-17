@@ -23,8 +23,8 @@ export const dark = {
   title: 'dark',
 
   colors: {
-    primary: '#6B5FBE',
-    primaryLight: '#877cdd',
+    primary: '#877cdd',
+    primaryLight: '#6B5FBE',
     background: '#1e2022',
     submit: '#00917c',
     submitDark: '#036d5d'

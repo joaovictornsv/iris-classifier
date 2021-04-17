@@ -7,6 +7,7 @@ import { Input, ButtonSubmit, ThemeSwitch } from '../components'
 import Main from '../styles/pages/Main'
 import Form from '../styles/pages/Form'
 import Result from '../styles/pages/Result'
+import ParticlesBackground from '../styles/pages/Result/Particles/index.jsx'
 
 import { predictClass } from '../services/api'
 
@@ -206,6 +207,7 @@ export default function Home({ toggleTheme, actualTheme }: IHome): JSX.Element {
            </Result.Box>
 
         </Result.Content>
+        <ParticlesBackground />
       </Result>
 
     </Main>

@@ -22,7 +22,9 @@ const Result: IResult = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 20px 0;
-
+  position: relative;
+  z-index: 1;
+  
   @media(max-height: 450px) {
     justify-content: flex-start;
   }
