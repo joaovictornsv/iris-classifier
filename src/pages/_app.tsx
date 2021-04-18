@@ -8,11 +8,11 @@ import { ThemeProvider } from 'styled-components'
 import { light, dark } from '../styles/theme'
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [isDark, setIsDark] = useState(false)
+  const [theme, setTheme] = useState('light')
 
-  const toggleTheme = (): void => {
-    console.log('troca')
-    setIsDark(!isDark)
+  const toggleTheme = (title: string): void => {
+    localStorage.setItem('theme', title)
+    setTheme(title)
   }
 
   return (
@@ -21,8 +21,8 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <title>Iris</title>
       </Head>
       <GlobalStyle />
-      <ThemeProvider theme={isDark ? dark : light}>
-        <Component {...pageProps} toggleTheme={toggleTheme} actualTheme={isDark ? dark.title : light.title}/>
+      <ThemeProvider theme={theme === 'light' ? light : dark}>
+        <Component {...pageProps} toggleTheme={toggleTheme} actualTheme={theme}/>
       </ThemeProvider>
     </>
   )

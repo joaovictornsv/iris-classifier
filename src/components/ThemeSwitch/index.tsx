@@ -6,7 +6,7 @@ import { FaSun, FaMoon } from 'react-icons/fa'
 import toggleAnimation from '../../assets/animations/toggle.json'
 
 interface IThemeSwitch {
-  onChange(): void;
+  onChange(value: string): void;
   actualTheme: string;
 }
 interface IAnimationState {
@@ -30,7 +30,7 @@ const ThemeSwitch = ({ onChange, actualTheme }: IThemeSwitch): JSX.Element => {
         setAnimationState({ ...animationState, direction: animationState.direction === 1 ? -1 : 1 })
       }
 
-      onChange()
+      actualTheme === 'light' ? onChange('dark') : onChange('light')
     }}>
       <Lottie
         width="50px"
