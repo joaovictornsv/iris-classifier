@@ -25,6 +25,7 @@ FormBase.Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.2s;
 
   @media(max-height: 450px) {
     padding: 20px 0;

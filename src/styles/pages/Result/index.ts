@@ -25,6 +25,8 @@ const Result: IResult = styled.div`
   position: relative;
   z-index: 1;
   
+  transition: background-color 0.2s;
+
   @media(max-height: 450px) {
     justify-content: flex-start;
   }
@@ -59,7 +61,7 @@ Result.Content = styled.div`
 `
 
 Result.Box = styled.div`
-  background-color: ${props => props.theme.colors.primaryLight};
+  background-color: ${props => props.theme.colors.primaryLight};;
   border-radius: 8px;
   width: 420px;
   max-width: 85vw;
@@ -69,6 +71,8 @@ Result.Box = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  transition: background-color 0.2s;
 `
 
 Result.Title = styled.h1`
