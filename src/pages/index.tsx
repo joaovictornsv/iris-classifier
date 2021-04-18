@@ -69,7 +69,7 @@ export default function Home({ toggleTheme, actualTheme }: IHome): JSX.Element {
 
     if (storageValue) {
       console.log('to', storageValue)
-      storageValue === 'light' ? toggleTheme('light') : toggleTheme('dark')
+      storageValue === 'light' && toggleTheme('dark')
     } else {
       localStorage.setItem('theme', 'light')
     }
