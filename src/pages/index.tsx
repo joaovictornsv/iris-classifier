@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, lazy, Suspense, useEffect } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import * as yup from 'yup'
 import { Formik } from 'formik'
 
@@ -63,17 +63,6 @@ export default function Home({ toggleTheme, actualTheme }: IHome): JSX.Element {
     petal_length: '',
     petal_width: ''
   }
-
-  useEffect(() => {
-    const storageValue = localStorage.getItem('theme')
-
-    if (storageValue) {
-      console.log('to', storageValue)
-      storageValue === 'light' ? toggleTheme('light') : toggleTheme('dark')
-    } else {
-      localStorage.setItem('theme', 'light')
-    }
-  }, [])
 
   const validation = yup.object().shape({
     sepal_length: yup.number().min(0, 'Number must be greater than or equal to 0').required('This field is required').typeError('This field must be a number'),

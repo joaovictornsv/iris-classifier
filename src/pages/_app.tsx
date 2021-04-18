@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import GlobalStyle from '../styles/GlobalStyle'
 
 import Head from 'next/head'
@@ -14,6 +14,17 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     localStorage.setItem('theme', title)
     setTheme(title)
   }
+
+  useEffect(() => {
+    const storageValue = localStorage.getItem('theme')
+
+    if (storageValue) {
+      console.log('to', storageValue)
+      storageValue === 'light' ? toggleTheme('light') : toggleTheme('dark')
+    } else {
+      localStorage.setItem('theme', 'light')
+    }
+  }, [])
 
   return (
     <>
