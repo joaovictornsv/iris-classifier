@@ -10,7 +10,7 @@ const Widget404 = (): JSX.Element => {
       <Lottie
         width="150px"
         height="150px"
-        className="lottie-container basic"
+        className="lottie-container basic lottie"
         config={{ animationData: animation404, loop: true, autoplay: true }}
       />
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Lottie, ReactLottiePlayingState } from '@crello/react-lottie'
 import { Div } from './styles'
 import { FaSun, FaMoon } from 'react-icons/fa'
@@ -16,20 +16,22 @@ interface IAnimationState {
 
 const ThemeSwitch = ({ onChange, actualTheme }: IThemeSwitch): JSX.Element => {
   const [animationState, setAnimationState] = useState<IAnimationState>({
-    playingState: 'stopped',
+    playingState: actualTheme === 'dark' ? 'stopped' : 'playing',
     direction: 1
   })
 
+  useEffect(() => {
+    if (animationState.playingState === 'stopped') {
+      setAnimationState({ ...animationState, playingState: 'playing' })
+    }
+
+    if (animationState.playingState === 'playing') {
+      setAnimationState({ ...animationState, direction: animationState.direction === 1 ? -1 : 1 })
+    }
+  }, [actualTheme])
+
   return (
     <Div onClick={() => {
-      if (animationState.playingState === 'stopped') {
-        setAnimationState({ ...animationState, playingState: 'playing' })
-      }
-
-      if (animationState.playingState === 'playing') {
-        setAnimationState({ ...animationState, direction: animationState.direction === 1 ? -1 : 1 })
-      }
-
       actualTheme === 'light' ? onChange('dark') : onChange('light')
     }}>
       <Lottie
