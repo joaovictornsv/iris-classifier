@@ -16,10 +16,30 @@ Iris Classifier
 </a>
 </p>
 <!-- Nav Menu -->
-<a  href=#rocket-technologies>Technologies</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#gift-contributing">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a  href="#memo-licença">License</a><br/><br/>
+<a  href=#book-about-the-project>About the project</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a  href=#rocket-technologies>Technologies</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#gift-contributing">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a  href="#memo-license">License</a><br/><br/>
 <img  width="100%"  src="https://i.imgur.com/sPhsp2n.png">
 <img  width="100%"  src="https://i.imgur.com/TSgOHxp.png">
 </div>
+
+---
+
+### :book: About the project
+The project contains the following functionalities:
+
+- **Python neural network API**
+	- This API receives some parameters about the measurements of the flower and based on that it make the prediction of its class.
+	- Its are created by my friend [Lucas Bivar](https://github.com/lucasbivar)
+	- To read more about the API, access the repository: [Iris Classifier API](https://github.com/lucasbivar/iris-classifier-api)
+<br>
+
+- **Light e Dark Themes 🌞🌚**
+  - The theme is saved in localStorage and is automatically switched
+- **Formulary validation with Formik 📄✅**
+	- The submission does not make a request if the input fields are invalid
+- **Animations with Lottie 🪐** 
+	- Loading the result and changing the theme with fluid animations 
+- **Animated background with particles.js ✨** 
+	- The website background contains a special animation created using particles.js
 
 ---
 ### :rocket: Technologies
