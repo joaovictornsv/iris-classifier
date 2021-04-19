@@ -1,28 +1,71 @@
-# TypeScript & Styled Components Next.js example
+<div  align="center">
+<!-- Top Image and Title -->
+<h1>
+Iris Classifier
+</h1>
+<!-- Subtitle/Description -->
+<h4>Iris Classifier é uma aplicação cujo objetivo é prever a classe da flor de Iris com base nas medições informadas pelo usuário. A predição ocorre através de uma rede neural desenvolvida em Python.</h4>
+<p>
+<!-- Image Shields -->
+<img  alt="Language Top"  src="https://img.shields.io/github/languages/top/joaovictornsv/iris-classifier">
+<img  alt="Languages Count"  src="https://img.shields.io/github/languages/count/joaovictornsv/iris-classifier">
+<img  alt="Last Commit"  src="https://img.shields.io/github/last-commit/joaovictornsv/iris-classifier">
+<img  alt="Repo Size"  src="https://img.shields.io/github/repo-size/joaovictornsv/iris-classifier">
+<a  href="https://github.com/joaovictornsv/climate-app/blob/master/LICENSE">
+<img  alt="License"  src="https://img.shields.io/github/license/joaovictornsv/iris-classifier.svg">
+</a>
+</p>
+<!-- Nav Menu -->
+<a  href=#telescope-technologies>Technologies</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#gift-contributing">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a  href="#memo-licença">License</a><br/><br/>
+<img  width="100%"  src="https://i.imgur.com/sPhsp2n.png">
+<img  width="100%"  src="https://i.imgur.com/TSgOHxp.png">
+</div>
 
-This is a really simple project that show the usage of Next.js with TypeScript and Styled Components.
+---
+### :telescope: Technologies
+- [NodeJS](https://nodejs.org)
+- [ReactJS](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [styled-components](https://styled-components.com/)
+- [Formik](https://formik.org/) 
+- [particles.js](https://vincentgarreau.com/particles.js/)
+- [Lottie](https://airbnb.design/lottie/)
+---
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-styled-components&project-name=with-typescript-styled-components&repository-name=with-typescript-styled-components)
-
-## How to use it?
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+### :information_source: How To Use
+  
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v10.16][nodejs] or higher + [Yarn v1.13][yarn] or higher installed on your computer.
+From your command line:
 
 ```bash
-npx create-next-app --example with-typescript-styled-components with-typescript-styled-components-app
-# or
-yarn create next-app --example with-typescript-styled-components with-typescript-styled-components-app
+# Clone this repository
+$ git clone https://github.com/joaovictornsv/iris-classifier
+
+# Go into the repository
+$ cd iris-classifier
+
+# Install dependencies and run the server
+$ yarn install
+$ yarn dev
+
 ```
+---
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+### :gift: Contributing
 
-## Notes
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
 
-This is an amalgamation of the 2 existing examples:
+---
 
-- [with-typescript](https://github.com/vercel/next.js/tree/canary/examples/with-typescript)
-- [with-styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)
+### :memo: License
+- :balance_scale: MIT License - [About](https://github.com/joaovictornsv/climate-app/blob/master/LICENSE)
+---
+  
+### :pencil2: Author
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/joaovictornsv"><img src="https://github.com/joaovictornsv.png" width="100px;" alt="Profile"/><br /><sub><b>João Victor</b></sub></a><br /><a href="https://github.com/joaovictornsv" title="Code">💻</a></td>
+  <tr>
+</table>
