@@ -26,7 +26,7 @@ Iris Classifier
 ### :book: About the project
 The project contains the following functionalities:
 
-- **Python neural network API**
+- **Python neural network API 🧠**
 	- This API receives some parameters about the measurements of the flower and based on that it make the prediction of its class.
 	- Its are created by my friend [Lucas Bivar](https://github.com/lucasbivar)
 	- To read more about the API, access the repository: [Iris Classifier API](https://github.com/lucasbivar/iris-classifier-api)
@@ -34,10 +34,13 @@ The project contains the following functionalities:
 
 - **Light e Dark Themes 🌞🌚**
   - The theme is saved in localStorage and is automatically switched
+
 - **Formulary validation with Formik 📄✅**
 	- The submission does not make a request if the input fields are invalid
+
 - **Animations with Lottie 🪐** 
 	- Loading the result and changing the theme with fluid animations 
+
 - **Animated background with particles.js ✨** 
 	- The website background contains a special animation created using particles.js
 
