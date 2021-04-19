@@ -12,7 +12,7 @@ Iris Classifier
 <img  alt="Last Commit"  src="https://img.shields.io/github/last-commit/joaovictornsv/iris-classifier">
 <img  alt="Repo Size"  src="https://img.shields.io/github/repo-size/joaovictornsv/iris-classifier">
 <a  href="https://github.com/joaovictornsv/climate-app/blob/master/LICENSE">
-<img  alt="License"  src="https://img.shields.io/github/license/joaovictornsv/iris-classifier.svg">
+<img  alt="License"  src="https://img.shields.io/github/license/joaovictornsv/iris-classifier">
 </a>
 </p>
 <!-- Nav Menu -->
@@ -60,7 +60,7 @@ Please make sure to update tests as appropriate.
 ---
 
 ### :memo: License
-- :balance_scale: MIT License - [About](https://github.com/joaovictornsv/climate-app/blob/master/LICENSE)
+- :balance_scale: MIT License - [About](https://github.com/joaovictornsv/iris-classifier/blob/master/LICENSE)
 ---
   
 ### :pencil2: Author
