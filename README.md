@@ -34,7 +34,7 @@ The project contains the following functionalities:
 
 - **Light e Dark Themes 🌞🌚**
   - The theme is saved in localStorage and is automatically switched
-- **Formulary validation with Formik 📄✅**
+- **Formulary validation with Formik and Yup 📄✅**
 	- The submission does not make a request if the input fields are invalid
 - **Animations with Lottie 🪐** 
 	- Loading the result and changing the theme with fluid animations 
