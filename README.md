@@ -17,8 +17,6 @@ Iris Classifier
 </p>
 <!-- Nav Menu -->
 <a  href=#book-about-the-project>About the project</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a  href=#rocket-technologies>Technologies</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#gift-contributing">Contributing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a  href="#memo-license">License</a><br/><br/>
-<img  width="100%"  src="https://i.imgur.com/sPhsp2n.png">
-<img  width="100%"  src="https://i.imgur.com/TSgOHxp.png">
 </div>
 
 ---
